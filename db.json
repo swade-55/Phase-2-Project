@@ -119,22 +119,6 @@
       "attendance": 24,
       "image": "https://rickandmortyapi.com/api/character/avatar/106.jpeg",
       "id": 22
-    },
-    {
-      "name": "Couch",
-      "uptime": "12",
-      "casesPerHour": "12",
-      "attendance": "12",
-      "image": "",
-      "id": 23
-    },
-    {
-      "name": "Harry",
-      "uptime": "13",
-      "casesPerHour": "13",
-      "attendance": "13",
-      "image": "",
-      "id": 24
     }
   ]
 }

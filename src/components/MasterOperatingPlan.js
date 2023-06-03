@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import AssociateRoster from './AssociateRoster'
-import AssociateForm from './AssociateForm'
 import Search from './Search'
 import Header from './Header'
 import { Container } from "semantic-ui-react";
@@ -12,6 +11,7 @@ function MasterOperatingPlan(){
     const [averageUptime,setAverageUptime] = useState('')
     const [averageAttendance,setAverageAttendance] = useState('')
     const [searchTerm,setSearchTerm] = useState('')
+    const [headCount,setHeadCount] = useState('')
     useEffect(()=>{
         fetch(`http://localhost:3001/workers`)
         .then(r=>r.json())
@@ -22,20 +22,28 @@ function MasterOperatingPlan(){
           let attendanceArray = data.map(cases=>{
             return cases['attendance']
           })
-          console.log("this is attendance array",attendanceArray)
           let totalAttendance = attendanceArray.reduce((attendanceSum,b)=>attendanceSum+b,0)
-          console.log("this is total attendance",totalAttendance)
-          const attendanceAverage = totalAttendance/attendanceArray.length
-          console.log("this is average Attendance",attendanceAverage)
+          const attendanceAverage = parseInt(totalAttendance/attendanceArray.length,10)
           const cphArray = data.map(cases=>{
             return cases['casesPerHour']
           })
+          let totalCPH = cphArray.reduce((cphSum,a)=>cphSum+a,0)
+          const cphAverage = parseInt(totalCPH/cphArray.length,10)
+
+          const uptimeArray = data.map(cases=>{
+            return cases['uptime']
+          })
+          let totalUptime = uptimeArray.reduce((uptimeSum,a)=>uptimeSum+a,0)
+          const uptimeAverage = parseInt(totalUptime/uptimeArray.length,10)
+
           const capacity = casesArray.reduce((partialSum, a) => partialSum + a, 0);
           setWorkers(data)
           setTotalCapacity(capacity)
           setAverageAttendance(attendanceAverage)
-          console.log('this is attendaceArray',attendanceArray)
-          console.log('this is total attendance',totalAttendance)
+          setAverageCPH(cphAverage)
+          setAverageUptime(uptimeAverage)
+          const totalHeadcount = casesArray.length
+          setHeadCount(totalHeadcount)
         })
     },[])
     console.log('this is averageAttendance',averageAttendance)
@@ -43,19 +51,17 @@ function MasterOperatingPlan(){
       const filteredWorkers = workers.filter(worker=>worker.id!==id)
       setWorkers(filteredWorkers)
     }
-    function handleAddAssociate(newAssociate){
-      setWorkers([...workers,newAssociate])
-    }
+    // function handleAddAssociate(newAssociate){
+    //   setWorkers([...workers,newAssociate])
+    // }
     const workersToDisplay = workers.filter(worker=>(
       worker.name.toLowerCase().includes(searchTerm.toLowerCase())
     ))
     return (
         <Container>
-          <Header totalCapacity={totalCapacity} averageAttendance={averageAttendance}/>
+          <Header totalCapacity={totalCapacity} averageAttendance={averageAttendance} averageCPH = {averageCPH} averageUptime={averageUptime} headCount = {headCount}/>
           <h1>Capacity Planner</h1>
           <br />
-          {/* <AssociateForm onAddAssociate={handleAddAssociate}/>
-          <br /> */}
           <Search search={searchTerm} onSearch={setSearchTerm}/>
           <br />
           <AssociateRoster workers = {workersToDisplay} handleDelete={handleDelete}/>

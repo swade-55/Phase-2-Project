@@ -7,12 +7,16 @@ import {BrowserRouter,Switch,Route} from "react-router-dom"
 import NavBar from "./components/NavBar"
 import About from "./components/About"
 import MasterOperatingPlan from "./components/MasterOperatingPlan";
+import AssociateForm from "./components/AssociateForm"
 
 ReactDOM.render(<BrowserRouter>
 <NavBar/>
 <Switch>
     <Route exact path="/about">
         <About/>
+    </Route>
+    <Route exact path="/employeeform">
+    <AssociateForm/>
     </Route>
     <Route exact path="/">
         <MasterOperatingPlan/>

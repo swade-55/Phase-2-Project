@@ -2,14 +2,14 @@ import React,{useState,useHistory} from 'react'
 import {Form} from 'semantic-ui-react'
 
 
-function AssociateForm({onAddAssociate}){
+function AssociateForm(){
   // const history = useHistory()
   const [formData, setFormData] = useState({
     name:'',
     uptime:'',
     casesPerHour:'',
     attendance:'',
-    image:'',
+    image:'', 
   })
   function handleChange(event){
     setFormData({
@@ -33,7 +33,7 @@ function AssociateForm({onAddAssociate}){
     body:JSON.stringify(newAssociate)
   })
   .then(r=>r.json())
-  .then(onAddAssociate)
+  .then(data=>console.log(data))
 }
 function alertSubmit(){
   alert('Form Submitted!')
@@ -44,7 +44,7 @@ function alertSubmit(){
         <Form
           onSubmit={handleSubmit}
         >
-          <Form.Group widths="equal">
+          <Form.Group className="field" widths="equal">
             <Form.Input fluid label="Name" placeholder="Name" name="name" value={formData.name} onChange={handleChange} />
             <Form.Input type="number" fluid label="Uptime" placeholder="uptime" name="uptime" value={formData.uptime} onChange={handleChange} />
             <Form.Input type="number" fluid label="Cases Per Hour" placeholder="casesPerHour" name="casesPerHour" value={formData.casesPerHour} onChange={handleChange} />

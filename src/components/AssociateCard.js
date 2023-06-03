@@ -26,9 +26,11 @@ function AssociateCard({worker,handleDelete}) {
             <ul/>
             Cases Per Hour {worker.casesPerHour}
             <ul/>
-            Absenteeism {worker.attendance}
+            Attendance {worker.attendance}
+            <ul/>
+            <button onClick={handleWorkerDelete}>🗑</button>
           </span>
-          <button onClick={handleWorkerDelete}>🗑</button>
+          
         </div>
       </div>
     </Card>
