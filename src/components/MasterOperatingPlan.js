@@ -54,21 +54,12 @@ function MasterOperatingPlan(){
           <Header totalCapacity={totalCapacity} averageAttendance={averageAttendance}/>
           <h1>Capacity Planner</h1>
           <br />
-          <AssociateForm onAddAssociate={handleAddAssociate}/>
-          <br />
+          {/* <AssociateForm onAddAssociate={handleAddAssociate}/>
+          <br /> */}
           <Search search={searchTerm} onSearch={setSearchTerm}/>
           <br />
           <AssociateRoster workers = {workersToDisplay} handleDelete={handleDelete}/>
         </Container>
-
-// <div class="float-parent-element">
-// <div class="float-child-element">
-//   <div class="red">Float Column 1</div>
-// </div>
-// <div class="float-child-element">
-//   <div class="yellow">Float Column 2</div>
-// </div>
-// </div>
       );
 }
 

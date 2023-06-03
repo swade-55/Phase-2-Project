@@ -16,6 +16,7 @@ function NavBar() {
         <div>
             <NavLink style={linkStyles} to="/">Home</NavLink>
             <NavLink style={linkStyles} to="/about">About</NavLink>
+            <NavLink style={linkStyles} to="/employeeform">New Employee</NavLink>
         </div>
     );
 }

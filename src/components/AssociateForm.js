@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,useHistory} from 'react'
 import {Form} from 'semantic-ui-react'
 
 
 function AssociateForm({onAddAssociate}){
+  // const history = useHistory()
   const [formData, setFormData] = useState({
     name:'',
     uptime:'',
@@ -34,6 +35,9 @@ function AssociateForm({onAddAssociate}){
   .then(r=>r.json())
   .then(onAddAssociate)
 }
+function alertSubmit(){
+  alert('Form Submitted!')
+}
     return (
         <div>
         <h3>Add an Associate!</h3>
@@ -54,7 +58,7 @@ function AssociateForm({onAddAssociate}){
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Button>Submit</Form.Button>
+          <Form.Button onClick={alertSubmit}>Submit</Form.Button>
         </Form>
       </div>
     );
