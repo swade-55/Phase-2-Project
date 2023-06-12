@@ -3,24 +3,10 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
-import {BrowserRouter,Switch,Route} from "react-router-dom"
-import NavBar from "./components/NavBar"
-import About from "./components/About"
-import MasterOperatingPlan from "./components/MasterOperatingPlan";
-import AssociateForm from "./components/AssociateForm"
+import {BrowserRouter} from "react-router-dom"
 
-ReactDOM.render(<BrowserRouter>
-<NavBar/>
-<Switch>
-    <Route exact path="/about">
-        <About/>
-    </Route>
-    <Route exact path="/employeeform">
-    <AssociateForm/>
-    </Route>
-    <Route exact path="/">
-        <MasterOperatingPlan/>
-    </Route>
+ReactDOM.render(
+<BrowserRouter>
 <App />
-</Switch>
-</BrowserRouter>, document.getElementById("root"));
+</BrowserRouter>
+, document.getElementById("root"));

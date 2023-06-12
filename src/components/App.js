@@ -20,7 +20,6 @@ function App() {
             <Route exact path="/">
             <MasterOperatingPlan />
             </Route>
-
       </Switch>
     </div>
     

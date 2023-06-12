@@ -1,9 +1,8 @@
-import React,{useState,useHistory} from 'react'
+import React,{useState} from 'react'
 import {Form} from 'semantic-ui-react'
 
 
 function AssociateForm(){
-  // const history = useHistory()
   const [formData, setFormData] = useState({
     name:'',
     uptime:'',
@@ -12,19 +11,26 @@ function AssociateForm(){
     image:'', 
   })
   function handleChange(event){
+    // const originalObject = parseInt(event.target.value,10)
+    // const nameValue=originalObject.name
+    // const updatedObject= delete originalObject.name
+    // updatedObject.name=nameValue
+
+    // console.log(value)
     setFormData({
       ...formData,[event.target.name]:event.target.value,
     })
+    // console.log("this is naem",event.target.name)
+    // console.log("this is value",event.target.value)
   }
   function handleSubmit(){
     const newAssociate = {
       name:formData.name,
-      uptime:formData.uptime,
-      casesPerHour:formData.casesPerHour,
-      attendance:formData.attendance,
+      uptime:parseInt(formData.uptime,10),
+      casesPerHour:parseInt(formData.casesPerHour,10),
+      attendance:parseInt(formData.attendance,10),
       image:formData.image,
     }
-
   fetch(`http://localhost:3001/workers`,{
     method:'POST'                     ,
     headers:{
@@ -35,6 +41,7 @@ function AssociateForm(){
   .then(r=>r.json())
   .then(data=>console.log(data))
 }
+
 function alertSubmit(){
   alert('Form Submitted!')
 }
@@ -45,10 +52,10 @@ function alertSubmit(){
           onSubmit={handleSubmit}
         >
           <Form.Group className="field" widths="equal">
-            <Form.Input fluid label="Name" placeholder="Name" name="name" value={formData.name} onChange={handleChange} />
-            <Form.Input type="number" fluid label="Uptime" placeholder="uptime" name="uptime" value={formData.uptime} onChange={handleChange} />
-            <Form.Input type="number" fluid label="Cases Per Hour" placeholder="casesPerHour" name="casesPerHour" value={formData.casesPerHour} onChange={handleChange} />
-            <Form.Input type="number" fluid label="Attendance Percentage" placeholder="attendance" name="attendance" value={formData.attendance} onChange={handleChange} />
+            <Form.Input type="text" fluid label="Name" placeholder="Name" name="name" value={formData.name} onChange={handleChange} />
+            <Form.Input  fluid label="Uptime" placeholder="uptime" name="uptime" value={formData.uptime} onChange={handleChange} />
+            <Form.Input  fluid label="Cases Per Hour" placeholder="casesPerHour" name="casesPerHour" value={formData.casesPerHour} onChange={handleChange} />
+            <Form.Input  fluid label="Attendance Percentage" placeholder="attendance" name="attendance" value={formData.attendance} onChange={handleChange} />
             <Form.Input
               fluid
               label="Link to Associate Picture"

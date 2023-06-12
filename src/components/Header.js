@@ -40,5 +40,3 @@ function Header({totalCapacity,averageAttendance,averageCPH, averageUptime,headC
 }
 
 export default Header;
-
-

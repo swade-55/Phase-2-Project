@@ -14,7 +14,7 @@ function AssociateCard({worker,handleDelete}) {
       <Card>
       <div>
         <div className="image">
-          <img className="worker-avatar" src={worker.image}alt="oh no!" />
+          <img className="worker-avatar" src={worker.image}alt="" />
         </div>
         <div className="content">
           <div className="header">{worker.name}</div>
