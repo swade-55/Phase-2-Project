@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Form} from 'semantic-ui-react'
 
 
-function AssociateForm(){
+function AssociateForm({onAddWorker}){
   const [formData, setFormData] = useState({
     name:'',
     uptime:'',
@@ -11,17 +11,9 @@ function AssociateForm(){
     image:'', 
   })
   function handleChange(event){
-    // const originalObject = parseInt(event.target.value,10)
-    // const nameValue=originalObject.name
-    // const updatedObject= delete originalObject.name
-    // updatedObject.name=nameValue
-
-    // console.log(value)
     setFormData({
       ...formData,[event.target.name]:event.target.value,
     })
-    // console.log("this is naem",event.target.name)
-    // console.log("this is value",event.target.value)
   }
   function handleSubmit(){
     const newAssociate = {
@@ -39,7 +31,7 @@ function AssociateForm(){
     body:JSON.stringify(newAssociate)
   })
   .then(r=>r.json())
-  .then(data=>console.log(data))
+  .then(onAddWorker)
 }
 
 function alertSubmit(){
