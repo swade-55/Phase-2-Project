@@ -23,22 +23,6 @@
       "attendance": 79,
       "image": "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
       "id": 25
-    },
-    {
-      "name": "Jaxon",
-      "uptime": 55,
-      "casesPerHour": 54,
-      "attendance": 67,
-      "image": "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
-      "id": 26
-    },
-    {
-      "name": "Harry",
-      "uptime": 86,
-      "casesPerHour": 140,
-      "attendance": 56,
-      "image": "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
-      "id": 27
     }
   ]
 }
