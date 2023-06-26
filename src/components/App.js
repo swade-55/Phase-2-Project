@@ -12,7 +12,7 @@ function App() {
     console.log('in use effect')
       fetch(`http://localhost:3001/workers`)
       .then(r=>r.json())
-      // .then(setWorkers)        
+      .then(setWorkers)        
   },[])
   function handleAddWorkers(newWorker) {
     setWorkers([...workers, newWorker]);
